@@ -4,16 +4,16 @@
 // The numbers below are sensible production defaults — tune to your community.
 
 export default {
-  // What text in a message starts a vote (case-insensitive, matched anywhere in
-  // the message). To manually pick the pair, mention two members in the same
-  // message, e.g. "<phrase> @userA @userB".
-  triggerPhrase: 'YOUR_TRIGGER_PHRASE',
+  // Vote: three choices (Time out / Arena / Cancel) — highest tally wins at the timer's end.
+  quorum: 5, // minimum TOTAL votes for any action; below it → no action
+  durationMinutes: 10, // the "Time out" choice length (minutes)
+  postArenaTimeoutMinutes: 5, // timeout applied AFTER the arena (0 = none)
+  voteWindowMinutes: 5, // how long voting stays open before the tally is read
 
-  // Vote maths.
-  threshold: 5, // (Yes − No) needed to pass
-  quorum: 8, // minimum distinct voters before a pass can fire (anti-clique)
-  durationMinutes: 10, // timeout length applied to BOTH nominated members
-  voteWindowMinutes: 5, // auto-close the vote if it hasn't passed by now
+  // Targets & who may hand-pick them.
+  maxTargets: 6, // most members a moderator can name in one vote
+  modRoleIds: [], // roles allowed to hand-pick targets & run /release ([] = use the "Moderate Members" permission)
+  votePasscode: '', // non-mods must supply this to start a vote via /dumplshelp passcode:… ('' = open to all, case-sensitive)
 
   // Auto-nomination (the 2 most-active recent talkers).
   activityWindowMinutes: 5, // how far back "recently active" looks
@@ -29,8 +29,16 @@ export default {
 
   // Where outcomes are logged. Empty string = no logging.
   modLogChannelId: 'YOUR_MODLOG_CHANNEL_ID',
+  modAlertRoleId: '', // role pinged in the mod-log when a vote needs a manual check ('' = no ping)
 
   // Roles that can never be nominated/voted on (mods/staff). Owner + admins +
   // anyone with the "Moderate Members" permission + bots are always excluded.
   protectedRoleIds: [],
+
+  // ── Arena room (the 🥊 choice) ──
+  containmentMinutes: 30, // time in the ring before everyone is auto-released
+  containedRoleId: '', // a role with "View Channel" DENIED on every category; '' disables the room
+  containmentCategoryId: '', // optional parent category ID for the temp channel ('' = no parent)
+  containmentChannelPrefix: '🥊Arena', // temp channel name prefix (Discord shows it lowercased: 🥊arena)
+  stripRolesOnContain: true, // remove the member's roles while jailed & restore on release (seals the jail)
 };

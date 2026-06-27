@@ -29,4 +29,8 @@ Thumbs.db
 
 # Local-only — keep live operational details & internal notes out of the public repo
 config.js
+messages.js
 CLAUDE.md
+
+# Runtime state (active jail records — restored on restart)
+.containments.json
