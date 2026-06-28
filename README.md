@@ -8,6 +8,9 @@ person — it acts on whoever's in the fight.
 > Built for the GeForce NOW Thailand community. All wording lives in `messages.js`, so you can
 > translate or restyle every message (the shipped copy is bilingual Thai + English in Dum's voice).
 
+> This project is part of the experimental work to handle a highly sensitive and argumentative community - We prefer not to be the judge or hand disclipnary actions for our paid users.
+> As of 29 June 2026, I (Suta) decided to focus on our for-production version, archive and retire this one. If you see this and is interested, please email to ice@mysuta.com
+
 ## How a vote works
 
 1. **Someone reports a war** with `/dumplshelp` (they need the *magic word*, unless they're a
